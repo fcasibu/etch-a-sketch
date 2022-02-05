@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --grid-size: 16;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #404040;
+  color: #cfcfcf;
+  font-family: 'Roboto', sans-serif;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.change-bg {
+  position: relative;
+}
+
+.change-bg input[type="color"] {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.color-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cfcfcf;
+}
+
+input[type="color"] {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+button,
+.change-bg label {
+  background: none;
+  color: #cfcfcf;
+  padding: 1rem 1.5rem;
+  border: 1px solid #cfcfcf;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  font-weight: bold;
+}
+
+button:hover,
+.change-bg label:hover {
+  background: #cfcfcf;
+  color: #404040;
+}
+
+
+.selected {
+  transform: scale(0.8);
+  background: #cfcfcf;
+  color: #404040;
+}
+
+.middle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  background: #333;
+  width: 400px;
+  height: 400px;
+  border-radius: 0.3rem;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  cursor: url('../cursor.png'), auto;
+}
+
+.slider-label {
+  position: absolute;
+  top: 50%;
+  font-size: 7rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  z-index: 99;
+  pointer-events: none;
+}
+
+.show-label {
+  visibility: visible;
+  opacity: 1;
+}
+
+input[type="range"] {
+  position: absolute;
+  left: -25%;
+  transform: rotate(90deg);
+}
+
+.square {
+  transition: all 200ms linear;
+}
+
+@media (max-width:500px) {
+  .container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .slider-label {
+    font-size: 4rem;
+    top: 57%;
+  }
+
+  input[type="range"] {
+    left: -40%;
+  }
+}
